@@ -3,11 +3,11 @@ require 'open-uri'
 
 def getJobs
   arrayOfJobs = []
-  url = 'http://www.garysguide.com/jobs?category=programming&type=&region=newyork'
-  data = Nokogiri::HTML(open(url))
+  base_url = 'http://www.garysguide.com'
+  main_url = "#{base_url}/jobs?category=programming&type=&region=newyork"
+  data = Nokogiri::HTML(open(main_url))
   all_sections = data.css('table > tr > td > table > tr > td:nth-child(3) > table > tr')
   sections = all_sections.slice(2..all_sections.length)
-  base_url = 'http://www.garysguide.com'
 
   counter1 = 0
   counter2 = 0
